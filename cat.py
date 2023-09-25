@@ -62,72 +62,19 @@ print(bigcount, bigword)"""
 # print("\nGood Job") 
       
  
-question_dict = {
-    "help:": "Show this help ",
-    "quit:": "Quit the program ",
-    "add:": "Create a new contact ",
-    "list:": "Show list of all contacts ",
-    "delete:": "Delete single contact ",
-    "edit:": "Edit existing contact"
-}
+def encrypt_caesar(msg, shift):
+    new_msg = ""
+    for i in msg:
+        shifted = ord(i) + shift  - ord('A')
+        shifted %= 26  
+        encrypted_char = chr(shifted + ord('A'))  
+        new_msg += encrypted_char
+       
 
-def print_help():
-    for cmd in question_dict:
-        print(cmd, question_dict[cmd])
+    return new_msg
 
-contact_dict = {
-    "alice": 123445,
-    "bob": 234545
-}
 
-def print_contact():
-    i = 0
-    sorted_contacts = sorted(contact_dict.items())
-    for name, number in sorted_contacts:
-        i += 1
-        print(str(i) + ". " + name + " - " + str(number))
-
-def add_contact():
-    name = input("Add your contact's name: ")
-    number = input("Add your contact's number: ")
-    contact_dict[name] = number
-
-def delete_contact():
-    delete = input("Enter this name or number to delete a contact: ")
-    if delete in contact_dict:
-        del contact_dict[delete]
-        return delete
-    else:
-        return None
-
-def edit_contact():
-    name = input("Enter contact's name or number to edit: ")
-    if name in contact_dict:
-        number = input("Enter new number: ")
-        contact_dict[name] = number
-
-while True:
-    question = input("Enter a command (h for help): ")
-    if question == "h":
-        print_help()
-    elif question == "list":
-        print_contact()
-    elif question == "quit":
-        print("Goodbye!")
-        quit()
-    elif question == "add":
-        add_contact()
-        print_contact()
-    elif question == "delete":
-        deleted_contact = delete_contact()
-        if deleted_contact:
-            print(f"{deleted_contact} has been deleted.")
-        else:
-            print("Contact not found.")
-        print_contact()
-    elif question == "edit":
-        edit_contact()
-        print_contact()
-
-        
-
+plaintext = "HELLO"
+shift_value = 3
+encrypted_text = encrypt_caesar(plaintext, shift_value)
+print("Encrypted Message:", encrypted_text)

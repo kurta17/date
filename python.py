@@ -112,13 +112,13 @@ print("\nGood Job") """
 
 
  
-"""a = int(input("enter your number: "))
+a = int(input("enter your number: "))
 b = []
 for i in range(1, a+1):
   if a % i == 0 and i not in b:
     b.append(i)
 
-print("All the divisors of this number: ", b)"""
+print("All the divisors of this number: ", b)
 
 
 """a = int(input("enter your number: "))
@@ -273,8 +273,6 @@ print(check(b))"""
 # s = "hELLO wORLD"
 # # inbuilt
 # print(s.swapcase())
-
-
 
 
 
